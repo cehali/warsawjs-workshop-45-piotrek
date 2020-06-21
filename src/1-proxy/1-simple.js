@@ -9,4 +9,14 @@
  * @returns a proxy that always returns +1
  */
 export function alwaysPlusOne (target) {
+  return new Proxy (target, {
+    get: function(target, prop) {
+      let value = target[prop];
+      if (typeof value === 'number') {
+        return value + 1;
+      } else {
+        return value;
+      }
+    }
+  });
 }

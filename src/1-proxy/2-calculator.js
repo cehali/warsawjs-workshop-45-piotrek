@@ -14,4 +14,9 @@
  * @returns a calculator
  */
 export function createCalculator () {
-}
+  return new Proxy({}, {
+    get: function(target, prop) {
+      return eval(prop)
+    }
+  });
+};
